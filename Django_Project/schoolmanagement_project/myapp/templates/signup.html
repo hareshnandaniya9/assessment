@@ -1,0 +1,212 @@
+{% extends 'header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	{% load static %}
+	<script type="text/javascript" src="{% static 'js/signup.js' %}">
+		
+	</script>
+	<style type="text/css">
+		tr,td{
+			padding: 12px;
+			font-size: 20px;
+
+		}
+		
+		div.container{
+			width: 900px;
+			margin-top:50px ;
+			margin-right: 200px;
+  			border: 1px solid #73AD21;
+  			border-radius: 10px;
+  			background-color:lightblue;
+  			height: 1500px;
+
+
+		}
+		h1{
+			text-align: center;
+		}
+		body{
+			background-color:#dfe1ee;
+			
+
+		}
+		#ca{
+			border-radius: 20px;
+			background-color: blue;
+		}
+		input{
+			border-radius: 8px;
+			border-width: 1px;
+			text-align: center;
+		}
+		.signup{
+			position: absolute;
+			margin-left: 230px;
+			color: green;
+			margin-top: -20px;
+
+		}
+		.select{
+			width: 500px;
+			text-align: center;
+			height: 40px;
+			border-radius: 10px;
+		}
+		.span{
+			position: absolute;
+			margin-left: 330px;
+			color: red;
+			margin-top: -25px;
+		}
+		.btn-primary2{
+			color: white;
+			background-color: blue;
+			border-radius: 10px;
+		}
+		.c{
+			position: absolute;
+			margin-top: -15px;
+			margin-left: 280px;
+		
+		}
+
+	</style>
+	
+</head>
+<body>
+		
+		<div class="container">
+		<h1>Create Account</h1>
+		{% if msg %}
+			<b class="c" style="color: blue;">{{msg}}</b>
+		{% endif %}
+	
+		<form method="post" action="{% url 'signup' %}" name="frm"  enctype="multipart/form-data">
+			{% csrf_token %}
+
+			<table>
+				
+				<tr>
+					<td>First Name</td>
+					<td><input style="width: 500px; height: 40px;" type="text" name="fname" onblur="checkFname();" value="{{user.fname}}" placeholder="Enter First Name"></td>
+				</tr>
+				<tr>
+					<td><span class="span" id="fname"></span></td>
+				</tr>
+				
+				<tr>
+					<td>Last Name</td>
+					<td><input style="width: 500px; height: 40px;" type="text" name="lname" value="{{user.lname}}" onblur="checkLname();" placeholder="Enter Last Name"></td>
+				</tr>
+				<tr>
+					<td><span class="span" id="lname"></span></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input style="width: 500px; height: 40px;" type="text" name="email" value="{{user.email}}" onblur="checkEmail();" placeholder="Enter Email_Id"></td>
+				</tr>
+				<tr>
+					<td><span class="span" id="email"></span></td>
+				</tr>
+				<tr>
+					<td>Mobile</td>
+					<td><input style="width: 500px; height: 40px;" type="text" name="mobile" value="{{user.mobile}}" onblur="checkmobile();" placeholder="Enter Mobile Number"></td>
+				</tr>
+				<tr>
+					<td><span class="span" id="mobile"></span></td>
+				</tr>
+				<tr>
+					<td>Gender</td>
+					<td><input style="width: 500px; height: 40px;" type="text" name="gender" value="{{user.gender}}" onblur="checkgender();" placeholder="Enter Gender"></td>
+				</tr>
+        		<tr>
+        			<td><span class="span" id="gender"></span></td>
+        		</tr>
+        		
+				<tr>
+					<td>D.O.B</td>
+					<td><input style="width: 500px; height: 40px;" type="text" name="dob" value="{{user.dob}}" onblur="checkdob();" placeholder="Enter Birth Date"></td>
+				</tr>
+				<tr>
+        			<td><span class="span" id="dob"></span></td>
+        		</tr>
+				
+				<tr>
+					<td>Aadhaar card No.</td>
+					<td><input style="width: 500px; height: 40px;" type="text" name="aadhaar" value="{{user.aadhaar}}" onblur="checkaadhaar();" placeholder="Enter Aadhaar card No"></td>
+				</tr>
+				<tr>
+					<td><span class="span" id="aadhaar"></span></td>
+				</tr>
+				<tr>
+					<td>Sate</td>
+					<td><input style="width: 500px; height: 40px;" type="text" name="state" value="{{user.state}}" onblur="checkstate();" placeholder="Enter State"></td>
+				</tr>
+        		<tr>
+        			<td><span class="span" id="state"></span></td>
+        		</tr>
+				<tr>
+					<td>City</td>
+					<td><input style="width: 500px; height: 40px;" type="text" name="city" value="{{user.city}}" onblur="checkcity();" placeholder="Enter City"></td>
+				</tr>
+        		<tr>
+        			<td><span class="span" id="city"></span></td>
+        		</tr>
+				<tr>
+					<td>Pincode</td>
+					<td><input style="width: 500px; height: 40px;" type="text" name="pincode" value="{{user.pincode}}" onblur="checkpincode();" placeholder="Enter Pincode"></td>
+				</tr>
+				<tr>
+					<td><span class="span" id="pincode"></span></td>
+				</tr>
+				<tr>
+					<td>Address</td>
+					
+					<td><textarea style="width:500px" cols="22" rows="5" name="address" value="{{user.address}}" onblur="checaddress();"  placeholder="Enter Address"></textarea></td>
+				</tr>
+				<tr>
+					<td><span class="span" id="address"></span></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><input style="width: 500px; height: 40px;" type="Password" name="password" onblur="checkpassword()" placeholder="*************************************************************************************"></td>
+				</tr>
+				<tr>
+					<td><span class="span" id="password"></span></td>
+				</tr>
+				<tr>
+					<td>Confrim Password</td>
+					<td><input style="width: 500px; height: 40px;" type="Password" name="cpassword" onblur="checkcpassword();" placeholder="**************************************************************************************"></td>
+				</tr>
+				<tr>
+					<td><span class="span" id="cpassword"></span></td>
+				</tr>
+				<tr>
+
+					<td>Uplod Photo</td>
+					<td><input type="file" name="photo" onblur="checkphoto();"></td>
+				</tr>
+				<tr>
+					<td><span class="span" id="photo"></span></td>
+				</tr>
+				<tr>
+					
+					<td colspan="2" align="center"><input style="width: 300px; height: 40px;" type="submit" name="action" value="Create Acount" class="btn btn-primary2" id="btn"></td>
+				</tr>
+				<tr><td>
+					<a  class="signup" href="{% url 'login' %}">Already have an account?</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
+</body>
+</html>
+{% endblock %}

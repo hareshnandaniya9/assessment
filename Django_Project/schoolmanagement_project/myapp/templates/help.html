@@ -1,0 +1,163 @@
+{% extends 'header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		body{
+			background-color: lightblue;
+		}
+		tr,td{
+			padding: 15px;
+			
+
+		}
+		.help{
+			font-size: 40px;
+			color: green;
+		}
+		select{
+			margin-top: 50px;
+		}
+		h1{
+			font-family: sans-serif;
+			font-size: 30px;
+			margin-top: -10px;
+			color: blue;
+		}
+		h2{
+			font-family: sans-serif;
+			font-size: 30px;
+			color: green;
+			margin-left: 310px;
+		}
+		hr{
+			border-width: 5px;
+			border: 1px solid #73AD21;
+
+
+		}
+		.qu{
+			margin-top: -20px;
+			width: 700px;
+			height: 70px;
+			border-radius: 10px;
+			font-size: 20px;
+			text-align: center;
+		}
+		.serch-1{
+			color: white;
+			position: absolute;
+			width: 80px;
+			height: 70px;
+			margin-top: -45px;
+			margin-left: -112px;
+			border-radius: 10px;
+			border-color: red;
+			background-color: gray;
+		}
+		.container{
+			background-color: white;
+			width: 700px;
+			height: 100px;
+			margin-right: 350px;
+			border-radius: 10px;
+		}
+		.h2{
+			margin-left: -400px;
+			color: blue;
+		}
+		h4{
+			margin-left: -120px;
+		}
+		.get{
+			position: absolute;
+			margin-left: 240px;
+			background-color: blue;
+			width: 100px;
+			height: 50px;
+			margin-top: -35px;
+			color: white;
+			border-radius: 7px;
+
+		}
+		.container-1{
+			background-color: white;
+			width: 300px;
+			height: 80px;
+			margin-top: 40px;
+			margin-left: -450px;
+			border-radius: 10px;
+		}
+		.account{
+			position: absolute;
+			margin-left: 50px;
+
+		}
+		.container-2{
+			background-color: white;
+			width: 350px;
+			height: 80px;
+			margin-top: -75px;
+			margin-left: 320px;
+			border-radius: 10px;
+		}
+	</style>
+	
+</head>
+<body>
+	<form>
+	{% csrf_token %}
+	<h1>Khedut Help Center</h1><hr>
+	<center>
+		<form>
+			<table>
+				<tr>
+					<td class="help">How can we help you?</td>
+				</tr>
+				<tr>
+					<td><input class="qu" type="text" name="qu" placeholder="Serch help articales...."></td>
+					<td> <a href="#"><input  class="serch-1" type="submit" name="serch" value="Serch"></td></a>
+				</tr>
+				
+
+			</table>
+		</form>
+	</center>
+	<h2>Popular topics</h2>
+	<center>
+		<div class="container">
+			<a href="#">
+
+			<h2 class="h2"> Need help logding in?</h2>
+			<input class="get" type="submit" name="get" value="Get Help">
+			</a>
+			<h4>Learn what to do if you're having trouble with getting back on Facebook</h4>
+			
+		</div>
+	</center>
+	<center>
+		
+		<div class="container-1">
+		<a href="#">
+		<h2 class="account">Acount Seting</h2>
+		</a>
+			
+		</div>
+	</center>
+	<center>
+		
+		<div class="container-2">
+		<a href="#">
+		<h2 class="account">Login & Password</h2>
+		</a>
+			
+		</div>
+	</center>
+	</form>
+</body>
+</html>
+{% endblock %}

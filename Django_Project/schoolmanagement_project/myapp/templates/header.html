@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css"> -->
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .btn-primary1{
+      margin-top: 10px;
+      border-color: black;
+      border-radius: 50%;
+      height: 35px;
+      background-color: blue;
+      color: white;
+    }
+    .serch{
+      margin-top: 10px;
+      margin-left: -390px;
+      position: absolute;
+      width: 370px;
+      height: 35px;
+      border-radius: 5px;
+      border: 1px;
+      text-align: center;
+    }
+    .heding{
+      margin-left: 20px;
+    }
+    
+    /*.container-fluid{
+      background-color: rgb(0, 110, 0);
+      color: white;
+    }*/
+    
+  </style>
+</head>
+<body>
+	<nav class="navbar navbar-inverse " style="background-color: coral; color: black;" >
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Institute</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Saft<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Staf</a></li>
+            
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Student<span class="caret"></span></a>
+      	
+      	  <ul class="dropdown-menu ">
+      	  	<li ><a  href="#">Student</a></li>
+          	
+          </ul>
+      </li>
+      
+    </ul>
+    
+      
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <!-- <input class="serch" type="text" name="serch" placeholder="Serch hear..."> -->
+
+      </li>
+        
+      
+       {% if request.session.email %}
+
+      <li><a href="{% url 'change_password' %}"><span class="glyphicon glyphicon-edit"></span> Change Password</a></li>
+      <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      <h4  class="heding" style="color:blue;">Welcome {{request.session.fname}} {{request.session.lname}}
+        <a href="{% url 'Profile' %}"><img src="{{ request.session.photo}}" width="40px" height="40px"></a>
+      </h4>
+       {% else %}
+       <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+       {% endif %}
+      
+    </ul>
+  </div>
+</nav>
+{% block content %}
+{% endblock %}
+</body>
+</html>

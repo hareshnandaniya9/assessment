@@ -1,0 +1,146 @@
+{% extends 'header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	{% load static %}
+	<script type="text/javascript" src="{% static 'js/feedback.js' %}">
+		
+	</script>
+	<style type="text/css">
+		tr,td{
+			padding: 15px;
+			font-size: 20px;
+		}
+
+		input{
+			border-radius: 8px;
+			border-width: 1px;
+			text-align: center;
+		}
+		.feedback{
+			border-radius: 8px;
+			border-width: 1px;
+
+		}
+		
+		div.container{
+			width: 700px;
+			margin-top:50px ;
+			margin-right: 300px;
+  			border: 1px solid #73AD21;
+  			border-radius: 10px;
+  			background-color:lightblue;
+  			height: 700px;
+
+		}
+		h1{
+			text-align: center;
+
+		}
+		body{
+			background-color:#dfe1ee;
+			
+
+		}
+		#submit{
+			border-radius: 20px;
+			background-color: blue;
+			width: 200px;
+		}
+		.span{
+			position: absolute;
+			margin-left: 250px;
+			color: red;
+			margin-top: -20px;
+		}
+		.b{
+			position: absolute;
+			margin-top: -15px;
+			margin-left: 230px;
+		}
+		.resent{
+			position: absolute;
+			margin-left: 20px;
+			margin-top:-700px ;
+			color: blue;
+		}
+		.div{
+			color: green;
+			margin-left: 50px;
+		}
+	</style>
+	
+</head>
+<body>
+	
+		<div class="container">
+		<h1 style="color: green;">Feed Back</h1>
+		{% if msg %}
+		<b class="b" style="color: blue;">{{msg}}</b>
+		{% endif %}
+		
+		{% if request.session.email %}
+		<form method="post" action="{% url 'feedback' %}" name="frm">
+
+				
+		{% else %}
+		<form method="post" action="{% url 'login' %}" name="frm">
+
+		{% endif %}
+			{% csrf_token %}
+			<table>
+				<tr>
+					<td >Name</td>
+				
+				
+					<td><input style="width: 500px; height: 40px;" type="text" name="name" onblur="checkname();" placeholder="Name"></td>
+				</tr>
+				<tr>
+					<td><span class="span" id="name"></span></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input style="width: 500px; height: 40px;" type="text" name="email" onblur="checkEmail()" placeholder="Email"></td>
+				</tr>
+				<tr>
+					<td><span class="span" id="email"></span></td>
+				</tr>
+				<tr>
+					<td>Mobile</td>
+					<td><input style="width: 500px; height: 40px;" type="text" name="mobile" onblur="checkmobile();" placeholder="Mobile Number"></td>
+				</tr>
+				<tr>
+					<td><span class="span" id="mobile"></span></td>
+				</tr>
+				<tr>
+					<td>FeedBack</td>
+					
+					<td><textarea  class="feedback" style="width:500px" cols="22" rows="5" name="feedback" onblur="checkfeedback();"  placeholder="feedback"></textarea></td>
+				</tr>
+				<tr>
+					<td><span class="span" id="feedback"></span></td>
+				</tr>
+
+				<tr>
+					
+					<td colspan="2" align="center"><input  type="submit" name="action" value="SUBMIT" class="btn btn-primary" id="submit"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div class="resent">
+	<h2>Resecet FeedBack</h2>
+		<div class="div">
+			{% for i in feedbacks %}
+				Name:{{i.name}}<br>
+				FeedBack:{{i.feedback}}<br><hr>
+			{% endfor %}
+		</div>
+	</div>
+</body>
+</html>
+{% endblock %}
