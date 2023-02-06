@@ -1,0 +1,10 @@
+Acount_Number:101
+Name:haresh
+Total_avalible_balance:5000.0
+Withdwal_Amount:1000.0
+Total_Balance:4000.0
+Acount_Number:101
+Name:haresh
+Total_avalible_balance:50000
+Withdwal_Amount:2000.0
+Total_Balance:48000.0

@@ -1,0 +1,9 @@
+Account_No:101
+Name:haresh
+Opning Balance:1000000.0
+Account_No:102
+Name:ramesh
+Opning Balance:200000.0
+Account_No:103
+Name:jignesh
+Opning Balance:300000.0

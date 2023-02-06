@@ -1,0 +1,5 @@
+Acount_Number:101
+Name:haresh
+Total_balance:50000
+Diposite_Amount:30000.0
+Total_Avalible_Balance:80000.0
